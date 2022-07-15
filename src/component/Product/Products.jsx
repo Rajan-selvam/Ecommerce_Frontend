@@ -24,17 +24,12 @@ const categories = [
 export const Products = () => {
 
     const dispatch = useDispatch();
-
     let params = useParams();
-
     const alert = useAlert();
 
     const [currentPage, setCurrentPage ] = useState(1);
-
-    const [price, setPrice ] = useState([0, 25000]);
-    
+    const [price, setPrice ] = useState([0, 25000]);    
     const [category, setCategory ] = useState('');
-
     const [ratings, setRatings] = useState(0);
 
     const { 
@@ -47,17 +42,14 @@ export const Products = () => {
         } = useSelector( state => state.product );
 
     const keyword = params.keyword;
-
     let count = filteredProductsCount;
 
     const setCurrentPageNo = (e) => {
         setCurrentPage(e);
     };
-
     const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
-    };
-    
+    };    
     useEffect(()=>{
         if (error) {
             alert.error(error);

@@ -3,7 +3,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import FaceIcon from "@material-ui/icons/Face";
 import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
-import { useNavigate, Link  } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { clearErrors , loadUser, updateProfile } from "../../actions/userAction";
 import Loader from "../layout/Loader/Loader";

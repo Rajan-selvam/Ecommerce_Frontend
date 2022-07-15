@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
-import { useNavigate, Link  } from 'react-router-dom';
+// import { useNavigate, Link  } from 'react-router-dom';
 
 import { clearErrors , forgotPassword } from "../../actions/userAction";
 import Loader from "../layout/Loader/Loader";
@@ -13,7 +13,7 @@ const ForgotPassword = () => {
 
     const dispatch = useDispatch();
     const alert = useAlert();
-    const navigate  = useNavigate();
+    // const navigate  = useNavigate();
 
     const { error, message, loading } = useSelector(state => state.forgotPassword);
 
@@ -21,9 +21,7 @@ const ForgotPassword = () => {
 
     const forgotPasswordSubmitHandler = (e) => {
         e.preventDefault();
-
         const myForm = new FormData();
-
         myForm.set('email',email);
         dispatch(forgotPassword(myForm));
     };
