@@ -16,10 +16,10 @@ const ProductList = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
 
-    const { error, products } = useSelector(state => state.products);
+    const { error, products } = useSelector(state => state.product);
 
     const columns = [
-        { field:"id", headerName: "Product ID", minWidth: 170, flex: 0.5 },
+        { field:"id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
         {
             field:"name", 
             headerName: "Name", 
@@ -30,14 +30,14 @@ const ProductList = () => {
             field:"stock", 
             headerName: "Stock", 
             type: "number",
-            minWidth: 120, 
+            minWidth: 110, 
             flex: 0.3
         },
         {
             field:"price", 
             headerName: "Price", 
             type: "number",
-            minWidth: 150, 
+            minWidth: 140, 
             flex: 0.5
         },
         {
