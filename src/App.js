@@ -2,7 +2,7 @@ import Header from "./component/layout/Header/Header";
 import Footer from "./component/layout/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import './App.css';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import WebFont from "webfontloader";
 import axios from "axios";
 import Home from "./component/Home/Home";
@@ -19,7 +19,6 @@ import UpdateProfile from "./component/User/UpdateProfile";
 import UpdatePassword from "./component/User/UpdatePassword";
 import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
-// import ProtectedRoutes from "./component/Routes/ProtectedRoutes";
 import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder";
@@ -29,12 +28,16 @@ import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/orderSuccess";
 import MyOrders from "./component/Order/MyOrders";
 import OrderDetails from "./component/Order/OrderDetails";
+import Dashboard from "./component/Admin/Dashboard";
+import ProductList from "./component/Admin/ProductList";
 
 const App = () => {
 
   const {isAuthenticated, user} = useSelector(state => state.user);
 
   const [stripeApiKey, setStripeApiKey] = useState("");
+
+  const isAdmin = user && user.role && user.role === 'admin';
 
   const getStripApiKey = async () => {
     const API_URL = "http://localhost:4000/api/v1";
@@ -45,6 +48,10 @@ const App = () => {
     setStripeApiKey(data.stripeApiKey);
   };
 
+  const memoizedCallback = useCallback(()=> {
+    getStripApiKey();
+  },[isAuthenticated,user]);
+
   useEffect(()=>{
     WebFont.load({
       google: {
@@ -53,10 +60,10 @@ const App = () => {
     });
 
     store.dispatch(loadUser());
+
+    memoizedCallback();
     
-    // if (isAuthenticated) {
-      getStripApiKey();
-    // }
+    // getStripApiKey();
 
   },[]);
 
@@ -84,6 +91,8 @@ const App = () => {
           <Route exact path="/success" element={isAuthenticated && <OrderSuccess />} />
           <Route exact path="/orders" element={isAuthenticated && <MyOrders />} />
           <Route exact path="/order/:id" element={isAuthenticated && <OrderDetails />} />
+          <Route exact path="/admin/dashboard" element={(isAuthenticated && isAdmin) && <Dashboard />} />
+          <Route exact path="/admin/products" element={(isAuthenticated && isAdmin) && <ProductList />} />
         </Routes>
       <Footer />
       </>

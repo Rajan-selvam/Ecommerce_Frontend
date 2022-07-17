@@ -20,7 +20,7 @@ const UserOptions = ({user}) => {
 
     const [open, setOpen] = useState(false);
 
-    const dashboard = () => { navigate('/dashboard')};
+    const dashboard = () => { navigate('/admin/dashboard')};
     const orders = () => { navigate('/orders')};
     const account = () => { navigate('/profile')};
     const cart = () => { navigate('/cart')};

@@ -3,6 +3,9 @@ import {
     ALL_PRODUCT_REQUEST,
     ALL_PRODUCT_SUCCESS,
     ALL_PRODUCT_FAIL,
+    ADMIN_PRODUCT_REQUEST,
+    ADMIN_PRODUCT_SUCCESS,
+    ADMIN_PRODUCT_FAIL,
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
@@ -37,6 +40,26 @@ export const getProduct = (keyword='',currentPage=1,price=[0,5000],category,rati
         });
     }
 };
+
+export const getAllProducts = () => async(dispatch) => {
+    try {
+        dispatch({ type: ADMIN_PRODUCT_REQUEST });
+
+        const config = { withCredentials: true };
+
+        const { data } = await axios.get(`${API_URL}/admin/products`, config);
+
+        dispatch({
+            type: ADMIN_PRODUCT_SUCCESS,
+            payload: data.products 
+        });
+    } catch (error) {
+        dispatch({
+            type: ADMIN_PRODUCT_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+}
 
 export const clearErrors = () => async (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });
