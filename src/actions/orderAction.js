@@ -69,7 +69,11 @@ export const getAllOrders = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
 
-    const { data } = await axios.get(`${API_URL}/admin/ordrs`);
+    const config = {
+      withCredentials: true
+    };
+
+    const { data } = await axios.get(`${API_URL}/admin/orders`,config);
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
   } catch (error) {
@@ -80,7 +84,7 @@ export const getAllOrders = () => async (dispatch) => {
   }
 };
 
-// Update Order
+// Update Order admin
 export const updateOrder = (id, order) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_ORDER_REQUEST });
@@ -105,12 +109,16 @@ export const updateOrder = (id, order) => async (dispatch) => {
   }
 };
 
-// Delete Order
+// Delete Order admin
 export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ORDER_REQUEST });
 
-    const { data } = await axios.delete(`${API_URL}/admin/order/{id}`);
+    const config = {
+      withCredentials: true
+    };
+
+    const { data } = await axios.delete(`${API_URL}/admin/order/${id}`,config);
 
     dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
   } catch (error) {

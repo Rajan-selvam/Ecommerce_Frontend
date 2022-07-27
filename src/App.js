@@ -30,6 +30,12 @@ import MyOrders from "./component/Order/MyOrders";
 import OrderDetails from "./component/Order/OrderDetails";
 import Dashboard from "./component/Admin/Dashboard";
 import ProductList from "./component/Admin/ProductList";
+import NewProduct from "./component/Admin/NewProduct";
+import UpdateProduct from "./component/Admin/UpdateProduct";
+import OrdersList from "./component/Admin/OrdersList";
+import ProcessOrder from "./component/Admin/ProcessOrder";
+import UsersList from "./component/Admin/UsersList";
+import UpdateUser from "./component/Admin/UpdateUser";
 
 const App = () => {
 
@@ -62,8 +68,6 @@ const App = () => {
     store.dispatch(loadUser());
 
     memoizedCallback();
-    
-    // getStripApiKey();
 
   },[]);
 
@@ -93,6 +97,12 @@ const App = () => {
           <Route exact path="/order/:id" element={isAuthenticated && <OrderDetails />} />
           <Route exact path="/admin/dashboard" element={(isAuthenticated && isAdmin) && <Dashboard />} />
           <Route exact path="/admin/products" element={(isAuthenticated && isAdmin) && <ProductList />} />
+          <Route exact path="/admin/product" element={(isAuthenticated && isAdmin) && <NewProduct />} />
+          <Route exact path="/admin/product/:id" element={(isAuthenticated && isAdmin) && <UpdateProduct />} />
+          <Route exact path="/admin/orders" element={(isAuthenticated && isAdmin) && <OrdersList />} />
+          <Route exact path="/admin/order/:id" element={(isAuthenticated && isAdmin) && <ProcessOrder />} />
+          <Route exact path="/admin/users" element={(isAuthenticated && isAdmin) && <UsersList />} />
+          <Route exact path="/admin/user/:id" element={(isAuthenticated && isAdmin) && <UpdateUser />} />
         </Routes>
       <Footer />
       </>

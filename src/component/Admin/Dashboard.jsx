@@ -11,12 +11,36 @@ import {
     Tooltip,
     Legend,
     ArcElement,
-  } from 'chart.js';
+} from 'chart.js';
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
+import { getAllProducts } from "../../actions/productAction";
+import { getAllOrders } from '../../actions/orderAction';
 import Sidebar from './Sibebar';
 import './dashboard.css';
 
 const Dashboard = () => {
+
+    const dispatch = useDispatch();
+
+    const { products } = useSelector(state => state.product);
+    const { orders } = useSelector(state => state.allOrders);
+    const { users } = useSelector(state => state.allUsers);
+
+    let outOfStock = 0;
+
+    products && products.forEach(item => {
+        if (item.stock === 0) {
+            outOfStock += 1;
+        }
+    });
+
+    useEffect(()=>{
+        dispatch(getAllProducts());
+        dispatch(getAllOrders());
+        dispatch(getAllUsers());
+    },[dispatch]);
 
     ChartJS.register(
         CategoryScale,
@@ -40,14 +64,14 @@ const Dashboard = () => {
             },
         ],
     };
-
+    const stockProduct = products ? (products.length - outOfStock) : 0;
     const doughnutState = {
         labels: ["Out of Stock", "Instock"],
         datasets: [
             {
                 backgroundColor: ["#00A6B4", "#6800B4"],
                 hoverBackgroundColor: ["#4B5000", "35014F"],
-                data: [2, 10]
+                data: [outOfStock, stockProduct]
             },
         ],
     };
@@ -66,15 +90,15 @@ const Dashboard = () => {
                     <div className='dashboardSummaryBox2'>
                         <Link to="/admin/products">
                         <p>Product</p>
-                        <p>50</p>
+                        <p>{products && products.length}</p>
                         </Link>
                         <Link to="/admin/orders">
                         <p>Orders</p>
-                        <p>4</p>
+                        <p>{orders && orders.length}</p>
                         </Link>
                         <Link to="/admin/users">
                         <p>Users</p>
-                        <p>2</p>
+                        <p>{users && users.length}</p>
                         </Link>
                     </div>
                 </div>

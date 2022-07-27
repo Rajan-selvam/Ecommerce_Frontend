@@ -27,7 +27,7 @@ const About = () => {
             </Button>
             <span>
               This is a sample wesbite made by @Rajan. Only with the
-              purpose to learn MERN Stack Help of google and the youtube channel.
+              purpose to learn MERN Stack Help of google and the youtube.
             </span>
           </div>
           <div className="aboutSectionContainer2">
