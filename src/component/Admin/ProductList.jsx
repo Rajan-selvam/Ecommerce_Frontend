@@ -12,7 +12,7 @@ import {
     clearErrors 
 } from "../../actions/productAction";
 import MetaData from "../layout/MetaData";
-import Sidebar from "./Sibebar";
+import Sidebar from "./Sidebar";
 import './productList.css';
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 

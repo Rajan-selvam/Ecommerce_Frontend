@@ -8,8 +8,8 @@ import {
     Person,
     VerifiedUser
 } from "@material-ui/icons";
-import SideBar from "./Sidebar";
-import { UPDATE_USER_RESET } from "../../constants/userConstants";
+import Sidebar from "./Sidebar";
+import { UPDATE_USER_RESET } from "../../constants/userConstant";
 import {
   getUserDetails,
   updateUser,
@@ -42,9 +42,9 @@ const UpdateUser = () => {
     if (user && user._id !== userId) {
       dispatch(getUserDetails(userId));
     } else {
-      setName(user.name);
-      setEmail(user.email);
-      setRole(user.role);
+      user && setName(user.name);
+      user && setEmail(user.email);
+      user && setRole(user.role);
     }
     if (error) {
       alert.error(error);
@@ -65,9 +65,7 @@ const UpdateUser = () => {
 
   const updateUserSubmitHandler = (e) => {
     e.preventDefault();
-
     const myForm = new FormData();
-
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("role", role);
@@ -79,7 +77,7 @@ const UpdateUser = () => {
     <>
       <MetaData title="Update User" />
       <div className="dashboard">
-        <SideBar />
+        <Sidebar />
         <div className="newProductContainer">
           {loading ? (
             <Loader />

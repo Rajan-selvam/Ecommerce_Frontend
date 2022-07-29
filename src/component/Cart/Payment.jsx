@@ -154,4 +154,8 @@ const Payment = () => {
     );
 };
 
+// export const removeCartItems = (cartItems) => {
+
+// };
+
 export default Payment;

@@ -12,7 +12,7 @@ import {
     clearErrors 
 } from "../../actions/userAction";
 import MetaData from "../layout/MetaData";
-import Sidebar from "./Sibebar";
+import Sidebar from "./Sidebar";
 import './productList.css';
 import { DELETE_USER_RESET } from "../../constants/userConstant";
 
@@ -23,7 +23,7 @@ const UsersList = () => {
     const navigate = useNavigate();
 
     const { error, users } = useSelector(state => state.allUsers);
-    const { error:deleteError, isDeleted, message } = useSelector(state => state.userDetails);
+    const { error:deleteError, isDeleted, message } = useSelector(state => state.profile);
 
     const deleteUserHandler = (id) => {
         dispatch(deleteUser(id));

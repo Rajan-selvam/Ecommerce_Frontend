@@ -1,4 +1,4 @@
-import { Button, formatMs } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { useState, useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +14,7 @@ import {
 import { createNewProduct, clearErrors } from "../../actions/productAction";
 import MetaData from "../layout/MetaData";
 import "./newProduct.css";
-import Sidebar from "./Sibebar";
+import Sidebar from "./Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstant";
 
 const categories = [

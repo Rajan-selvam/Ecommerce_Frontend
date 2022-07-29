@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { Button, Typography } from "@material-ui/core";
 import { AccountTree } from "@material-ui/icons";
 import MetaData from "../layout/MetaData";
-import Sidebar from "./Sibebar";
+import Sidebar from "./Sidebar";
 import Loader from "../layout/Loader/Loader";
 import "./processOrder.css";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";

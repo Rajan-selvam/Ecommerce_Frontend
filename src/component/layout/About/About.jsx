@@ -18,7 +18,7 @@ const About = () => {
           <div>
             <Avatar
               style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
-              src="https://res.cloudinary.com/tripleayt/image/upload/v1631555947/products/jpyibarlaxawvcvqjv5b.png"
+              src="https://res.cloudinary.com/dx1do1dxo/image/upload/v1659014445/samples/IMG_20220401_113843_2_wkwrxv.jpg"
               alt="Founder"
             />
             <Typography>RajaRajan S</Typography>
@@ -27,7 +27,7 @@ const About = () => {
             </Button>
             <span>
               This is a sample wesbite made by @Rajan. Only with the
-              purpose to learn MERN Stack Help of google and the youtube.
+              purpose to learn MERN Stack.
             </span>
           </div>
           <div className="aboutSectionContainer2">

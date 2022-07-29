@@ -36,6 +36,10 @@ import OrdersList from "./component/Admin/OrdersList";
 import ProcessOrder from "./component/Admin/ProcessOrder";
 import UsersList from "./component/Admin/UsersList";
 import UpdateUser from "./component/Admin/UpdateUser";
+import ProductReviews from "./component/Admin/ProductReviews";
+import Contact from "./component/layout/Contact/Contact";
+import About from "./component/layout/About/About";
+import NotFound from "./component/layout/Not Found/NotFound";
 
 const App = () => {
 
@@ -71,6 +75,8 @@ const App = () => {
 
   },[]);
 
+  // window.addEventListener("contextmenu", (e) => e.preventDefault());
+
   return (
     <>
       <Header />
@@ -81,6 +87,8 @@ const App = () => {
           <Route exact path="/products" element={<Products />} />
           <Route path="/products/:keyword" element={<Products />} />
           <Route exact path="/search" element={<Search />} />
+          <Route exact path="/contact" element={<Contact/>} />
+          <Route exact path="/about" element={<About/>} />
           { isAuthenticated && <Route exact path="/profile" element={<Profile />} /> }
           <Route exact path="/login" element={<LoginSignUp />} />
           { isAuthenticated &&  <Route exact path="/user/update" element={<UpdateProfile />} />}
@@ -103,6 +111,11 @@ const App = () => {
           <Route exact path="/admin/order/:id" element={(isAuthenticated && isAdmin) && <ProcessOrder />} />
           <Route exact path="/admin/users" element={(isAuthenticated && isAdmin) && <UsersList />} />
           <Route exact path="/admin/user/:id" element={(isAuthenticated && isAdmin) && <UpdateUser />} />
+          <Route exact path="/admin/reviews" element={(isAuthenticated && isAdmin) && <ProductReviews />} />
+          <Route element={
+            window.location.pathname === "/process/payment" ? null : <NotFound />
+          } />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       <Footer />
       </>

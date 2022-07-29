@@ -225,7 +225,7 @@ export const getUserDetails = (id) => async (dispatch) =>{
         
         dispatch({ 
             type: USER_DETAILS_SUCCESS,
-            payload: data.users
+            payload: data.user
          });
 
     } catch (error) {

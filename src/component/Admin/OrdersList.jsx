@@ -6,7 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@material-ui/core";
 import { Edit, Delete } from "@material-ui/icons";
 import MetaData from "../layout/MetaData";
-import Sidebar from "./Sibebar";
+import Sidebar from "./Sidebar";
 import "./productList.css";
 import { 
     getAllOrders, 

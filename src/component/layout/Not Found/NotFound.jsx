@@ -1,7 +1,7 @@
 import { Error } from "@material-ui/icons";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import "./NotFound";
+import "./NotFound.css";
 
 const NotFound = () => {
     return (

@@ -11,7 +11,7 @@ import {
     AttachMoney
 } from "@material-ui/icons";
 import MetaData from "../layout/MetaData";
-import Sidebar from "./Sibebar";
+import Sidebar from "./Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstant";
 import { clearErrors, getProductDetails, updateProduct } from "../../actions/productAction";
 

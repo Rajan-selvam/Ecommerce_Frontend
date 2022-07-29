@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import { useEffect, useState } from "react";
+import { DataGrid } from "@mui/x-data-grid/DataGrid";
 import "./productReviews.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -10,11 +10,9 @@ import {
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
-import DeleteIcon from "@material-ui/icons/Delete";
-import Star from "@material-ui/icons/Star";
-
+import { Delete, Star } from "@material-ui/icons";
 import SideBar from "./Sidebar";
-import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
+import { DELETE_REVIEW_RESET } from "../../constants/productConstant";
 import { useNavigate } from "react-router-dom";
 
 const ProductReviews = () => {
@@ -102,15 +100,15 @@ const ProductReviews = () => {
       sortable: false,
       renderCell: (params) => {
         return (
-          <Fragment>
+          <>
             <Button
               onClick={() =>
                 deleteReviewHandler(params.getValue(params.id, "id"))
               }
             >
-              <DeleteIcon />
+              <Delete />
             </Button>
-          </Fragment>
+          </>
         );
       },
     },
@@ -129,7 +127,7 @@ const ProductReviews = () => {
     });
 
   return (
-    <Fragment>
+    <>
       <MetaData title={`ALL REVIEWS - Admin`} />
 
       <div className="dashboard">
@@ -177,7 +175,7 @@ const ProductReviews = () => {
           )}
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

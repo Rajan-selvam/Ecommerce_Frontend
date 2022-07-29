@@ -17,7 +17,8 @@ import { useEffect } from "react";
 
 import { getAllProducts } from "../../actions/productAction";
 import { getAllOrders } from '../../actions/orderAction';
-import Sidebar from './Sibebar';
+import { getAllUsers } from "../../actions/userAction";
+import Sidebar from './Sidebar';
 import './dashboard.css';
 
 const Dashboard = () => {
@@ -42,6 +43,11 @@ const Dashboard = () => {
         dispatch(getAllUsers());
     },[dispatch]);
 
+    let totalAmount = 0;
+    orders && orders.forEach((item)=>{
+        totalAmount += item.totalPrice;
+    });
+
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -60,7 +66,7 @@ const Dashboard = () => {
                 label: "TOTAL AMOUNT",
                 backgroundColor: ["tomato"],
                 hoverBackgroundColor: ["rgb(197, 72, 49)"],
-                data: [0, 4000],
+                data: [0, totalAmount],
             },
         ],
     };
@@ -84,7 +90,7 @@ const Dashboard = () => {
                 <div className='dashboardSummary'>
                     <div>
                         <p>
-                            Total Amount <br />$1200
+                            Total Amount <br />₹{totalAmount}
                         </p>
                     </div>
                     <div className='dashboardSummaryBox2'>
