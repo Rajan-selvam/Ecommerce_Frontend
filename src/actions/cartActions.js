@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO } from '../constants/cartConstants';
 
-const API_URL = "http://localhost:4000/api/v1";
+const API_URL = "/api/v1";
 
 // Add Item to Cart
 export const addItemsToCart = (id, quantity) => async(dispatch, getState) => {

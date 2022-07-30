@@ -30,7 +30,7 @@ import {
     CLEAR_ERRORS
 } from "../constants/productConstant";
 
-const API_URL = "http://localhost:4000/api/v1";
+const API_URL = "/api/v1";
 
 export const getProduct = (keyword='',currentPage=1,price=[0,5000],category,ratings=0) => async (dispatch) => {
     try{

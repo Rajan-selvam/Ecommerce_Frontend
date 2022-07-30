@@ -22,7 +22,7 @@ import {
 
 import axios from "axios";
 
-const API_URL = "http://localhost:4000/api/v1";
+const API_URL = "/api/v1";
 
 // Create Order
 export const createOrder = (order) => async (dispatch) => {

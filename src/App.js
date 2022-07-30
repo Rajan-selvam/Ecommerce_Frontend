@@ -50,7 +50,7 @@ const App = () => {
   const isAdmin = user && user.role && user.role === 'admin';
 
   const getStripApiKey = async () => {
-    const API_URL = "http://localhost:4000/api/v1";
+    const API_URL = "/api/v1";
     const {data} = await axios.get(`${API_URL}/stripeapikey`,{
       withCredentials: true
     });

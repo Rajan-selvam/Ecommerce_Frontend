@@ -38,7 +38,7 @@ import {
     DELETE_USER_FAIL
 } from "../constants/userConstant";
 
-const API_URL = "http://localhost:4000/api/v1";
+const API_URL = "/api/v1";
 
 //login
 export const login = (email, password) => async(dispatch) => {
